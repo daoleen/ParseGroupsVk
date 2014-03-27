@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+    provided.extendsFrom(compile)
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'log4j:log4j:1.2.17'
+}
+
+idea {
+    module {
+        jdkName = '1.8'
+        scopes.PROVIDED.plus += configurations.provided
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
